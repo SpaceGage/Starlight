@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://eof6w2x8b5d2"]
+
+[ext_resource type="Script" uid="uid://wafwp1bb872x" path="res://scripts/audio_player.gd" id="1_1qhh7"]
+[ext_resource type="AudioStream" uid="uid://dqd76u8d2fugr" path="res://Audio/PhoneCalls/PhoneCall1.mp3" id="2_syohv"]
+[ext_resource type="PackedScene" uid="uid://cux8nj7g2owfl" path="res://models/Phone.gltf" id="3_syohv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hjai"]
+size = Vector3(1.5, 1.2, 1.5)
+
+[node name="AudioPlayer" type="Area3D" unique_id=593106093]
+script = ExtResource("1_1qhh7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2138550723]
+stream = ExtResource("2_syohv")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1388309138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_3hjai")
+
+[node name="blockbench_export" parent="." unique_id=361847850 instance=ExtResource("3_syohv")]

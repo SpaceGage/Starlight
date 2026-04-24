@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dtpmdypokpvsg"]
+
+[ext_resource type="Texture2D" uid="uid://inn741ph6tur" path="res://idk.png" id="1_jutdw"]
+[ext_resource type="PackedScene" uid="uid://b1gbgpbadmxtu" path="res://scenes/indigo.tscn" id="2_w18xr"]
+[ext_resource type="PackedScene" uid="uid://bv1teo6djqkfr" path="res://scenes/tree.tscn" id="3_w3kx7"]
+[ext_resource type="PackedScene" uid="uid://eof6w2x8b5d2" path="res://scenes/audio_player.tscn" id="4_2jhjs"]
+[ext_resource type="Material" uid="uid://csgube5pxn55w" path="res://Materials/PS1PostProcess.tres" id="4_jutdw"]
+[ext_resource type="Material" uid="uid://ddwoyqt8siyi" path="res://Materials/VHSPostProcessing.tres" id="5_5vpve"]
+[ext_resource type="Texture2D" uid="uid://8st01b8tyqa2" path="res://Grass.png" id="6_5vpve"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c1nxb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w18xr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3kx7"]
+albedo_color = Color(1, 1, 1, 0.96862745)
+albedo_texture = ExtResource("1_jutdw")
+normal_texture = SubResource("NoiseTexture2D_w18xr")
+heightmap_texture = SubResource("NoiseTexture2D_c1nxb")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i8no0"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vysi6"]
+sky_material = SubResource("ProceduralSkyMaterial_i8no0")
+
+[sub_resource type="Environment" id="Environment_4s0it"]
+background_mode = 2
+sky = SubResource("Sky_vysi6")
+tonemap_mode = 2
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_normalized = true
+fog_enabled = true
+fog_light_energy = 2.0
+fog_density = 0.0005
+fog_sky_affect = 0.5
+fog_height = 2.0
+fog_height_density = 0.01
+
+[node name="TestDemoScene" type="Node3D" unique_id=193577226]
+
+[node name="Env" type="Node3D" parent="." unique_id=75661527]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Env" unique_id=289534706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00042438507, -0.771719, 0.0920161)
+use_collision = true
+size = Vector3(1000, 1, 1000)
+material = SubResource("StandardMaterial3D_w3kx7")
+
+[node name="Grass" type="Sprite3D" parent="Env" unique_id=1030018614]
+transform = Transform3D(20, 0, 0, 0, -8.742278e-07, -20, 0, 20, -8.742278e-07, 5.6042156, -0.25000048, 2.7800884)
+shaded = true
+texture_filter = 0
+texture = ExtResource("6_5vpve")
+
+[node name="Tree" parent="Env" unique_id=2007129216 instance=ExtResource("3_w3kx7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.403, -0.5, 0.107)
+
+[node name="Tree2" parent="Env" unique_id=608580748 instance=ExtResource("3_w3kx7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.1158237, -0.5, 0.107)
+
+[node name="Tree3" parent="Env" unique_id=1229670949 instance=ExtResource("3_w3kx7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.073055, -0.5, 0.107)
+
+[node name="Tree4" parent="Env" unique_id=640627583 instance=ExtResource("3_w3kx7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.403, -0.5, 4.853707)
+
+[node name="Tree5" parent="Env" unique_id=923485048 instance=ExtResource("3_w3kx7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.1158237, -0.5, 4.853707)
+
+[node name="Tree6" parent="Env" unique_id=1949176279 instance=ExtResource("3_w3kx7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.073055, -0.5, 4.853707)
+
+[node name="AudioPlayer" parent="Env" unique_id=593106093 instance=ExtResource("4_2jhjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.208299, -0.27171803, 2.3613937)
+
+[node name="Misc" type="Node3D" parent="." unique_id=641885835]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Misc" unique_id=1563559251]
+environment = SubResource("Environment_4s0it")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Misc" unique_id=935390152]
+transform = Transform3D(-0.8660253, -0.43301275, 0.24999993, -0.40173638, 0.9002752, 0.16766724, -0.29767087, 0.044770017, -0.9536182, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Indigo" parent="." unique_id=1622707754 instance=ExtResource("2_w18xr")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1826540545]
+
+[node name="N64EFFECT" type="ColorRect" parent="CanvasLayer" unique_id=1346261327]
+material = ExtResource("4_jutdw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VHSEFFECT" type="ColorRect" parent="CanvasLayer" unique_id=378984307]
+material = ExtResource("5_5vpve")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

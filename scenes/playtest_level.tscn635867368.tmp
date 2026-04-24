@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b2oumldyxpabm"]
+
+[ext_resource type="Material" uid="uid://bsfyvlv5isdim" path="res://PrototypeMater.tres" id="1_vtt4h"]
+[ext_resource type="Material" uid="uid://ccvrg2jt5o4ld" path="res://PrototypeMat.tres" id="2_lr4yd"]
+[ext_resource type="PackedScene" uid="uid://b1gbgpbadmxtu" path="res://scenes/indigo.tscn" id="3_vaug8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0u3ke"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vysi6"]
+sky_material = SubResource("ProceduralSkyMaterial_0u3ke")
+
+[sub_resource type="Environment" id="Environment_itah8"]
+background_mode = 2
+sky = SubResource("Sky_vysi6")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_energy = 2.0
+fog_density = 0.0005
+fog_sky_affect = 0.5
+fog_height = 2.0
+fog_height_density = 0.01
+
+[node name="Playtest" type="Node3D" unique_id=1736718183]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1867367725]
+environment = SubResource("Environment_itah8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=58017360]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="." unique_id=80324816]
+
+[node name="Floor" type="CSGBox3D" parent="World" unique_id=518305073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016978502, -0.98940516, 0.0076761246)
+use_collision = true
+size = Vector3(1000, 1, 1000)
+material = ExtResource("1_vtt4h")
+
+[node name="Box" type="CSGBox3D" parent="World" unique_id=1752375686]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 9, 0, 0)
+use_collision = true
+material = ExtResource("2_lr4yd")
+
+[node name="Box2" type="CSGBox3D" parent="World" unique_id=1805143171]
+transform = Transform3D(0.25881898, 0, -0.9659257, 0, 1, 0, 0.9659257, 0, 0.25881898, 2, 0.5, 9)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("2_lr4yd")
+
+[node name="Indigo" parent="." unique_id=1622707754 instance=ExtResource("3_vaug8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15975714, 4.7683716e-07, 0.44113016)

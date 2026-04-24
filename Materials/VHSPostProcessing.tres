@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ddwoyqt8siyi"]
+
+[ext_resource type="Shader" uid="uid://ct71ipadykqs6" path="res://Materials/VHS.tres" id="1_iy4kr"]
+
+[resource]
+shader = ExtResource("1_iy4kr")
+shader_parameter/smearing = 0.10000000475
+shader_parameter/color_offset = 0.005
+shader_parameter/sharpening = 0.250000011875
+shader_parameter/static_noise = 0.050000002375
+shader_parameter/crack_center = Vector2(0.15, 0.85)
+shader_parameter/crack_intensity = 0.30000001425
+shader_parameter/crack_size = 0.010000000475
+shader_parameter/vertical_jitter = 0.002
+shader_parameter/scanline_opacity = 0.10000000475
+shader_parameter/vignette_intensity = 0.250000011875
